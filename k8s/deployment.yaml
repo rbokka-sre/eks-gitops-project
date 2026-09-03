@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eks-gitops-project
+  namespace: eks-gitops-project
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: eks-gitops-project
+  template:
+    metadata:
+      labels:
+        app: eks-gitops-project
+    spec:
+      containers:
+        - name: eks-gitops-project
+          image: eks-gitops-project:1.0.0
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 20
