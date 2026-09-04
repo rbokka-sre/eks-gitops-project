@@ -1,0 +1,48 @@
+name: aks-gitops-project
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build-test-package:
+    runs-on: ubuntu latest
+    steps:
+      # 1. Checkout
+      - name: chekout repo
+        uses: actions/checkout@v4
+      # 2. install java
+      - name: install java
+        uses: actions/setup-java@v4
+      # 3. test maven
+      - name: test maven project
+        working-directory: app
+        run: mvn validate
+      # 4. build/compile
+      - name: build/compile
+        working-directory: app
+        run: mvn compile        
+      # 5. unit tests
+      - name: test
+        working-directory: app
+        run: mvn test
+      # 6. Package
+      - name: package
+        working-directory: app
+        run: mvn package
+      # 7. Verify War exists
+      - name: Verify War
+        run: |
+          echo "============Generated WAR:============"
+          ls -lh app/target/*.war
+      # 8. upload artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: eks-gitops-project-war
+          path: app/target/*.war
+      # 9. deploy
+      #- name:
+      #  uses:
