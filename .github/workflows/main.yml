@@ -8,7 +8,7 @@ on:
       - branch2
 jobs:
   build-test-package:
-    runs-on: ubuntu latest
+    runs-on: ubuntu slim
     steps:
       # 1. Checkout
       - name: chekout repo
