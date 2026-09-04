@@ -22,7 +22,7 @@ jobs:
       - name: Build WAR
         run: |
           cd app
-          mvn clean package -DskipTests
+          mvn clean package
 
       - name: Build Docker image
         run: |
