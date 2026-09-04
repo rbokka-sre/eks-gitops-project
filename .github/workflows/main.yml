@@ -8,7 +8,7 @@ on:
       - branch2
 jobs:
   build-test-package:
-    runs-on: ubuntu slim
+    runs-on: ubuntu-latest
     steps:
       # 1. Checkout
       - name: chekout repo
@@ -16,6 +16,9 @@ jobs:
       # 2. install java
       - name: install java
         uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
       # 3. test maven
       - name: test maven project
         working-directory: app
