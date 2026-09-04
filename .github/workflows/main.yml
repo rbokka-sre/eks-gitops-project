@@ -27,3 +27,25 @@ jobs:
       - name: build/compile
         working-directory: app
         run: mvn compile
+      # 5. unit tests
+      - name: test
+        working-directory: app
+        run: mvn test
+      # 6. Package
+      - name: package
+        working-directory: app
+        run: mvn package
+      # 7. Verify War exists
+      - name: Verify War
+        run: |
+          echo "============Generated WAR:============"
+          ls -lh app/target/*.war
+      # 8. upload artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: eks-gitops-project-war
+          path: app/target/*.war
+      # 9. deploy
+      #- name:
+      #  uses:
