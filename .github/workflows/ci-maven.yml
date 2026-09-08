@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     name: build-compile-package
-    runs-on: self-hosted
+    runs-on: ubuntu-slim
     permissions:
       actions: read
       contents: read
