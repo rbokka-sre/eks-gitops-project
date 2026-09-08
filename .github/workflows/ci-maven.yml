@@ -2,15 +2,15 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "dependabot" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "dependabot" ]
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
   build:
     name: build-compile-package
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, local]
     permissions:
       actions: read
       contents: read
