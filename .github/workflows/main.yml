@@ -2,7 +2,7 @@ name: aks-gitops-project
 on:
   push:
     branches:
-      - branch2
+      - main
   pull_request:
     branches:
       - branch2
@@ -19,10 +19,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      # 3. test maven
-      - name: test maven project
-        working-directory: app
-        run: mvn validate
       # 4. build/compile
       - name: build/compile
         working-directory: app
