@@ -2,9 +2,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dependabot" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dependabot" ]
   workflow_dispatch:
 
 jobs:
