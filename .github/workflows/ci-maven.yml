@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     name: build-compile-package
-    runs-on: [self-hosted, local]
+    runs-on: self-hosted
     permissions:
       actions: read
       contents: read
