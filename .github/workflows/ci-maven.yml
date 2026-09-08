@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript', 'python' ]
+        language: [ 'java-kotlin', 'actions' ]
         
     steps:
     - uses: actions/checkout@v4
