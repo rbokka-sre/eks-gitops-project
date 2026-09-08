@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'java-katlin', 'actions' ]
+        language: [ 'java-kotlin', 'actions' ]
         
     steps:
     - uses: actions/checkout@v4
