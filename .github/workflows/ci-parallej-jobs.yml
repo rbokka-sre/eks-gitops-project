@@ -10,7 +10,7 @@ on:
 jobs:
   codeql:
     name: SAST Testing
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
